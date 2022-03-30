@@ -18,4 +18,7 @@ public interface ItineraryTool {
 
     List<CordinateEntity> convertCordinatesMapToList(int transportUnitCode, Map<String, CordinateDTO> cordinatesMap);
 
+    List<CordinateEntity> calculateDistanceInKilometer(double userLat, double userLng, double kilometersRadius);
+
+    CordinateDTO convertCordinateEntityToDTO(CordinateEntity cordinateEntity);
 }

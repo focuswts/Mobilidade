@@ -9,4 +9,6 @@ public interface ItineraryRepository extends JpaRepository<ItineraryEntity, Stri
 
     Optional<ItineraryEntity> findByIdLinha(int idLinha);
 
+    void deleteByIdLinha(int idLinha);
+
 }

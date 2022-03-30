@@ -4,16 +4,22 @@ import com.bagatim.mobility.dtos.buslines.CordinateDTO;
 import com.bagatim.mobility.dtos.buslines.ItineraryDTO;
 import com.bagatim.mobility.entities.CordinateEntity;
 import com.bagatim.mobility.entities.ItineraryEntity;
+import com.bagatim.mobility.repositories.CordinateRepository;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class ItineraryToolsImpl implements ItineraryTool {
+
+    @Autowired
+    CordinateRepository cordinateRepository;
 
     public ItineraryDTO createItineraryFromJsonObject(String jsonResponse) {
 
@@ -89,6 +95,24 @@ public class ItineraryToolsImpl implements ItineraryTool {
         });
 
         return cordinateDTOMap;
+    }
+
+    @Override
+    public List<CordinateEntity> calculateDistanceInKilometer(double userLat, double userLng, double kilometersRadius) {
+
+        Optional<List<CordinateEntity>> cordinateEntityList = cordinateRepository.findCordinatesWithInDistance(userLat, userLng, kilometersRadius);
+
+        return cordinateEntityList.orElse(null);
+
+    }
+
+
+    @Override
+    public CordinateDTO convertCordinateEntityToDTO(CordinateEntity cordinateEntity) {
+        CordinateDTO cordinateDTO = new CordinateDTO();
+        cordinateDTO.setLng(cordinateDTO.getLng());
+        cordinateDTO.setLat(cordinateEntity.getLat());
+        return cordinateDTO;
     }
 
 
