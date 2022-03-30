@@ -2,8 +2,6 @@ package com.bagatim.mobility.services;
 
 import com.bagatim.mobility.dtos.buslines.BusLineDTO;
 import com.bagatim.mobility.dtos.buslines.BusLinesDTO;
-import com.bagatim.mobility.dtos.buslines.CordinateDTO;
-import com.bagatim.mobility.dtos.buslines.ItineraryDTO;
 import com.bagatim.mobility.entities.BusLineEntity;
 import com.bagatim.mobility.feignControllers.PoaTransporteController;
 import com.bagatim.mobility.repositories.BusLineRepository;
@@ -11,14 +9,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 

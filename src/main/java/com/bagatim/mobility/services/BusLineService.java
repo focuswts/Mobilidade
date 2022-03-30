@@ -1,7 +1,6 @@
 package com.bagatim.mobility.services;
 
 import com.bagatim.mobility.dtos.buslines.BusLineDTO;
-import com.bagatim.mobility.entities.BusLineEntity;
 import org.springframework.http.HttpStatus;
 
 public interface BusLineService {

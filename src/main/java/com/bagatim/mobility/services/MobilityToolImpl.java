@@ -18,7 +18,7 @@ public class MobilityToolImpl implements MobilityTool {
         String nome = String.valueOf(jsonObject.get("nome"));
         String codigo = String.valueOf(jsonObject.get("codigo"));
         Map<String, CordinateDTO> cordinateMap = new HashMap<>();
-        createCordinateMap(cordinateMap, jsonObject);
+        this.createCordinateMap(cordinateMap, jsonObject);
 
         return new ItineraryDTO(idlinha, nome, codigo, cordinateMap);
 

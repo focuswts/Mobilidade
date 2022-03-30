@@ -84,9 +84,14 @@ public class ItineraryServiceImpl implements ItineraryService {
 
         ItineraryEntity itineraryEntity = itineraryTool.convertItineraryDTOToItineraryEntity(itineraryDTO);
         itineraryEntity.setCordinatesList(itineraryTool.convertCordinatesMapToList(Integer.parseInt(itineraryDTO.getIdLinha()), itineraryDTO.getCordinatesList()));
+        Optional<ItineraryEntity> itineraryEntityExists = itineraryRepository.findByIdLinha(Integer.parseInt(itineraryDTO.getIdLinha()));
 
-        cordinateRepository.saveAll(itineraryEntity.getCordinatesList());
-        return itineraryTool.convertItineraryEntityToItineraryDTO(itineraryRepository.save(itineraryEntity));
+        if (itineraryEntityExists.isEmpty()) {
+            cordinateRepository.saveAll(itineraryEntity.getCordinatesList());
+            return itineraryTool.convertItineraryEntityToItineraryDTO(itineraryRepository.save(itineraryEntity));
+        }
+
+        return itineraryTool.convertItineraryEntityToItineraryDTO(itineraryEntityExists.get());
 
     }
 

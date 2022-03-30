@@ -24,7 +24,7 @@ public class BusLineServiceImpl implements BusLineService {
     public BusLineDTO getBusLine(String id) {
 
         Optional<BusLineEntity> busLineEntity = Optional.of(busLineRepository.getById(Integer.parseInt(id)));
-        return objectMapper.convertValue(busLineEntity, BusLineDTO.class);
+        return objectMapper.convertValue(busLineEntity.get(), BusLineDTO.class);
 
     }
 

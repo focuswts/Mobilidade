@@ -110,7 +110,7 @@ public class ItineraryToolsImpl implements ItineraryTool {
     @Override
     public CordinateDTO convertCordinateEntityToDTO(CordinateEntity cordinateEntity) {
         CordinateDTO cordinateDTO = new CordinateDTO();
-        cordinateDTO.setLng(cordinateDTO.getLng());
+        cordinateDTO.setLng(cordinateEntity.getLng());
         cordinateDTO.setLat(cordinateEntity.getLat());
         return cordinateDTO;
     }
