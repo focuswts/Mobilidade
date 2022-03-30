@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mobility?useSSL=false&createDatabaseIfNotExist=true
+    username: dev
+    password: 1234
+  jpa:
+    show-sql: false
+    open-in-view: false
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+    hibernate.ddl-auto: update
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+
